@@ -10,6 +10,8 @@ export const [themeClass, theme] = createTheme({
     accent: '#fa466a',
     background: '#f9fafc',
     border: '#c9cacc',
+    chipBackground: '#f1f0f3',
+    chipHoverBackground: '#f1f0f3',
     white: '#fff',
     black: '#000',
   },
