@@ -11,17 +11,31 @@ export const container = style({
 });
 
 export const labelStyle = style({
-  marginBottom: 10,
+  marginBottom: 5,
   ...theme.font.label,
 });
 
 export const titleStyle = style({
-  marginBottom: 30,
+  display: '-webkit-box',
+  height: 58,
+  marginBottom: 5,
+  textOverflow: 'ellipsis',
+  overflow: 'hidden',
+  wordBreak: 'break-word',
+  WebkitLineClamp: 2,
+  WebkitBoxOrient: 'vertical',
   ...theme.font.title,
 });
 
 export const descriptionStyle = style({
-  marginBottom: 20,
+  display: '-webkit-box',
+  height: 45,
+  marginBottom: 15,
+  textOverflow: 'ellipsis',
+  overflow: 'hidden',
+  wordBreak: 'break-word',
+  WebkitLineClamp: 2,
+  WebkitBoxOrient: 'vertical',
   ...theme.font.description,
 });
 
