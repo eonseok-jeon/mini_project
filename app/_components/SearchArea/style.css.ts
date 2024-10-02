@@ -9,6 +9,7 @@ export const container = style({
   padding: '12px 16px 12px 0px',
   border: `1px solid ${theme.color.border}`,
   borderRadius: 4,
+  backgroundColor: theme.color.white,
 
   ':focus-within': {
     border: `1px solid ${theme.color.primary}`,

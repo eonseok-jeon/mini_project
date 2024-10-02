@@ -1,12 +1,10 @@
 import { globalStyle } from '@vanilla-extract/css';
+import { theme } from './theme.css';
 
-globalStyle(
-  '*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *))',
-  {
-    all: 'unset',
-    display: 'revert',
-  }
-);
+globalStyle('*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *))', {
+  all: 'unset',
+  display: 'revert',
+});
 
 globalStyle('*, *::before, *::after', {
   boxSizing: 'border-box',
@@ -22,6 +20,7 @@ globalStyle('body', {
   WebkitFontSmoothing: 'antialiased',
   MozOsxFontSmoothing: 'grayscale',
   fontSmooth: 'never',
+  backgroundColor: theme.color.background,
 });
 
 globalStyle('a, button', {

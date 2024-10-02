@@ -31,7 +31,9 @@ export const dataList = style({
   display: 'flex',
   flexWrap: 'wrap',
   alignItems: 'center',
+  width: '100%',
   padding: '0px 8px',
+  backgroundColor: theme.color.white,
 });
 
 export const chip = style({
