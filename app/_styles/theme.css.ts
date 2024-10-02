@@ -16,6 +16,11 @@ export const [themeClass, theme] = createTheme({
     black: '#000',
   },
   font: {
+    label: {
+      fontSize: '12px',
+      fontWeight: 'bold',
+      color: '#524fa1',
+    },
     title: {
       fontSize: '18px',
       fontWeight: 'bold',
