@@ -33,7 +33,7 @@ export const iconContainer = style({
 
 export const iconWrapper = style({
   display: 'flex',
-  gap: 10,
+  gap: 8,
   alignItems: 'center',
   ...theme.font.iconText,
 });
