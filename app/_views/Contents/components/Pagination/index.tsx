@@ -1,5 +1,7 @@
+'use client';
+
 import { useState } from 'react';
-import { container, pageButton, pageNumberActive } from './style.css';
+import { container, pageArrowButton, pageNumberActive, pageNumberButton } from './style.css';
 import getPaginationRange from './utils/getPaginationRange';
 
 const MAX_PAGE = 20;
@@ -18,18 +20,18 @@ export default function Pagination() {
 
   return (
     <div className={container}>
-      <button disabled={currentPage === 1} onClick={handleClickPreviousPage} className={pageButton}>
+      <button disabled={currentPage === 1} onClick={handleClickPreviousPage} className={pageArrowButton}>
         &lt;
       </button>
       {paginationRange.map((page) => (
         <button
           key={page}
-          className={page === currentPage ? `${pageButton} ${pageNumberActive}` : pageButton}
+          className={page === currentPage ? `${pageNumberButton} ${pageNumberActive}` : pageNumberButton}
           onClick={() => setCurrentPage(page)}>
           {page}
         </button>
       ))}
-      <button disabled={currentPage === MAX_PAGE} onClick={handleClickNextPage} className={pageButton}>
+      <button disabled={currentPage === MAX_PAGE} onClick={handleClickNextPage} className={pageArrowButton}>
         &gt;
       </button>
     </div>

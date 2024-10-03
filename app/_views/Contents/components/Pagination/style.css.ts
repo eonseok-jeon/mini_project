@@ -1,5 +1,5 @@
 import { theme } from '@/app/_styles/theme.css';
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 
 export const container = style({
   display: 'flex',
@@ -16,7 +16,6 @@ export const pageButton = style({
   width: 24,
   height: 24,
   borderRadius: 5,
-  color: theme.color.paginationNumber,
 
   ':hover': {
     color: theme.color.primary,
@@ -24,20 +23,31 @@ export const pageButton = style({
   },
 });
 
-export const pageArrowButton = styleVariants({
-  active: {
-    color: theme.color.paginationArrowActive,
+export const pageNumberButton = style([
+  pageButton,
+  {
+    color: theme.color.paginationNumber,
   },
-  disable: {
-    color: theme.color.paginationArrowDisable,
-    cursor: 'not-allowed',
+]);
 
-    ':hover': {
+export const pageArrowButton = style([
+  pageButton,
+  {
+    color: theme.color.paginationArrowActive,
+
+    ':disabled': {
       color: theme.color.paginationArrowDisable,
-      background: theme.color.background,
+      cursor: 'not-allowed',
+    },
+
+    selectors: {
+      '&:disabled:hover': {
+        color: theme.color.paginationArrowDisable,
+        background: theme.color.background,
+      },
     },
   },
-});
+]);
 
 export const pageNumberActive = style({
   color: theme.color.white,
