@@ -17,7 +17,6 @@ export const pageButton = style({
   height: 24,
   borderRadius: 5,
   color: theme.color.paginationNumber,
-  transition: '0.2s all ease',
 
   ':hover': {
     color: theme.color.primary,
