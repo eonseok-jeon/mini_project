@@ -1,4 +1,4 @@
-import { container, pageButton } from './pagination.css';
+import { container, pageButton } from './style.css';
 
 export default function Pagination() {
   return (

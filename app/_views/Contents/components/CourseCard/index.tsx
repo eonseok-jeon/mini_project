@@ -7,7 +7,7 @@ import {
   labelStyle,
   priceWrapper,
   titleStyle,
-} from './courseCard.css';
+} from './style.css';
 import ClassroomIcon from '@/app/_assets/Classroom';
 import CalendarIcon from '@/app/_assets/CalendarIcon';
 

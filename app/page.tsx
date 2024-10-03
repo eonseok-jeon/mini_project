@@ -1,6 +1,6 @@
-import Contents from './_components/Contents';
-import Filter from './_components/Filter';
-import SearchArea from './_components/SearchArea';
+import Contents from './_views/Contents';
+import Filter from './_views/Filter';
+import SearchArea from './_views/SearchArea';
 
 export default function Home() {
   return (

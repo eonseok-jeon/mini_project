@@ -1,6 +1,6 @@
+import CourseCard from './components/CourseCard';
+import Pagination from './components/Pagination';
 import { DATA } from './constants';
-import CourseCard from './CourseCard';
-import Pagination from './Pagination';
 import { contentCounts, courseCardWrapper } from './style.css';
 
 const CONTENT_COUNTS = 121;
