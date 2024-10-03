@@ -13,4 +13,5 @@ export const courseCardWrapper = style({
   display: 'flex',
   gap: 16,
   flexWrap: 'wrap',
+  marginBottom: 24,
 });

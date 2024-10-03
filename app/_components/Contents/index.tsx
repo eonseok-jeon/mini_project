@@ -1,5 +1,6 @@
 import { DATA } from './constants';
 import CourseCard from './CourseCard';
+import Pagination from './Pagination';
 import { contentCounts, courseCardWrapper } from './style.css';
 
 const CONTENT_COUNTS = 121;
@@ -13,6 +14,7 @@ export default function Contents() {
           <CourseCard key={`${data.title}${data.label}`} {...data} />
         ))}
       </div>
+      <Pagination />
     </section>
   );
 }
