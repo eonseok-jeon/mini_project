@@ -4,20 +4,21 @@ import { useQuery } from '@tanstack/react-query';
 import CourseCard from './components/CourseCard';
 import Pagination from './components/Pagination';
 import { contentCounts, courseCardWrapper } from './style.css';
-
-const CONTENT_COUNTS = 121;
+import { useState } from 'react';
 
 export default function Contents() {
+  const [currentPage, setCurrentPage] = useState(1);
+
   const queryParams = new URLSearchParams({
     filter_conditions:
       '%7B%22%24and%22%3A%5B%7B%22title%22%3A%22%25%25%22%7D%2C%7B%22%24or%22%3A%5B%7B%22status%22%3A2%7D%2C%7B%22status%22%3A3%7D%2C%7B%22status%22%3A4%7D%5D%7D%2C%7B%22%24or%22%3A%5B%5D%7D%2C%7B%22is_datetime_enrollable%22%3Atrue%7D%5D%7D',
     sort_by: 'created_datetime.desc',
-    offset: '0',
+    offset: `${(currentPage - 1) * 20}`,
     count: '20',
   });
 
   const { data } = useQuery({
-    queryKey: ['courses-data'],
+    queryKey: ['courses-data', currentPage],
     queryFn: async () => {
       const res = await fetch(`api/?${queryParams.toString()}`);
       const result = await res.json();
@@ -30,19 +31,37 @@ export default function Contents() {
         logoFileUrl: item.logo_file_url,
       }));
 
-      return data;
+      return { data, courseCount: result.data.course_count };
     },
   });
 
-  console.log(data);
+  const maxPage = Math.floor(data?.courseCount / 20) + 1;
+
+  const handleClickPreviousPage = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const handleClickNextPage = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, maxPage));
+  };
+
+  const handleClickNowPage = (page: number) => {
+    setCurrentPage(page);
+  };
 
   return (
     <section>
-      <p className={contentCounts}>전체 {CONTENT_COUNTS}개</p>
+      <p className={contentCounts}>전체 {data?.courseCount}개</p>
       <div className={courseCardWrapper}>
-        {data?.map((data) => <CourseCard key={`${data.title}${data.shortDescription}`} {...data} />)}
+        {data?.data.map((data) => <CourseCard key={`${data.title}${data.shortDescription}`} {...data} />)}
       </div>
-      <Pagination />
+      <Pagination
+        currentPage={currentPage}
+        maxPage={maxPage}
+        onClickPreviousPage={handleClickPreviousPage}
+        onClickNextPage={handleClickNextPage}
+        onClickNowPage={handleClickNowPage}
+      />
     </section>
   );
 }

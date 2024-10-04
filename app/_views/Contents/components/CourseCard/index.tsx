@@ -20,7 +20,6 @@ export interface CourseCardProps {
 }
 
 export default function CourseCard({ enrollType, isFree, logoFileUrl, shortDescription, title }: CourseCardProps) {
-  console.log(enrollType, 'enroll');
   const price =
     enrollType === 4 ? '구독' : enrollType === 0 && !!isFree ? '무료' : enrollType === 0 && !isFree ? '유료' : '에러';
 
