@@ -50,3 +50,12 @@ export const chip = style({
     backgroundColor: theme.color.primary,
   },
 });
+
+export const activeChip = style({
+  color: theme.color.white,
+  backgroundColor: theme.color.primary,
+
+  ':hover': {
+    color: theme.color.strongText,
+  },
+});

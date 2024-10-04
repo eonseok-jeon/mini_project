@@ -35,6 +35,6 @@ export const FILTER_DATA = [
   },
   {
     label: '가격',
-    data: ['무료', '유료', '구독', '학점'],
+    data: ['무료', '유료'],
   },
 ];

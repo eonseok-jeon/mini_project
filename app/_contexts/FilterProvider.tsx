@@ -3,8 +3,8 @@
 import { createContext, type ReactNode, useCallback, useContext, useState } from 'react';
 
 type FilterType = {
-  title: string | null;
-  price: 'all' | 'free' | 'paid';
+  title?: string | null | undefined;
+  price?: string[] | undefined;
 };
 
 interface FilterContextType {
@@ -13,7 +13,7 @@ interface FilterContextType {
 }
 
 const FilterContext = createContext<FilterContextType>({
-  filter: { title: null, price: 'all' },
+  filter: { title: null, price: [] },
   handleSaveFilter: () => {},
 });
 
@@ -29,7 +29,7 @@ export const useFilter = () => {
 };
 
 const FilterProvider = ({ children }: { children: ReactNode }) => {
-  const [filter, setFilter] = useState<FilterType>({ title: null, price: 'all' });
+  const [filter, setFilter] = useState<FilterType>({ title: null, price: [] });
 
   const handleSaveFilter = useCallback((obj: FilterType) => {
     setFilter((prev) => ({ ...prev, ...obj }));
