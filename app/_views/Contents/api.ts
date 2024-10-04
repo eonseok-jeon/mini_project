@@ -1,6 +1,8 @@
+import { DataType } from './types';
+
 export default async function fetchCourses(
   page: number,
-  filter: { title: string | null | undefined; price: string[] | undefined } = { title: null, price: [] },
+  filter: { title?: string | null; price?: string[] } = { title: null, price: [] },
 ) {
   const { title, price } = filter;
   const filter_conditions = JSON.stringify({
@@ -30,7 +32,7 @@ export default async function fetchCourses(
   const res = await fetch(`api/?${queryParams.toString()}`);
   const result = await res.json();
 
-  const data = result.data.courses.map((item) => ({
+  const data = result.data.courses.map((item: DataType) => ({
     enrollType: item.enroll_type,
     isFree: item.is_free,
     title: item.title,

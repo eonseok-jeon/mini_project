@@ -11,27 +11,27 @@ import {
 } from './style.css';
 import ClassroomIcon from '@/app/_assets/Classroom';
 import CalendarIcon from '@/app/_assets/CalendarIcon';
+import { DataType } from '../../types';
 
 export interface CourseCardProps {
-  enrollType: number;
-  isFree: boolean;
-  logoFileUrl: string;
-  shortDescription: string;
+  enroll_type: number;
+  is_free: boolean;
+  logo_file_url: string;
+  short_description: string;
   title: string;
 }
 
-export default function CourseCard({ enrollType, isFree, logoFileUrl, shortDescription, title }: CourseCardProps) {
-  const price =
-    enrollType === 4 ? '구독' : enrollType === 0 && !!isFree ? '무료' : enrollType === 0 && !isFree ? '유료' : '에러';
+export default function CourseCard({ enroll_type, is_free, logo_file_url, short_description, title }: DataType) {
+  const price = enroll_type === 4 ? '구독' : enroll_type === 0 && !!is_free ? '무료' : '유료';
 
   return (
     <article>
       <div className={container}>
         <div className={labelStyle}>{'label'}</div>
         <p className={titleStyle}>{title}</p>
-        <p className={descriptionStyle}>{shortDescription}</p>
+        <p className={descriptionStyle}>{short_description}</p>
         <div className={iconContainer}>
-          <img src={logoFileUrl} alt={`${title}-logo`} className={logoImg} />
+          <img src={logo_file_url} alt={`${title}-logo`} className={logoImg} />
           <div className={iconWrapper}>
             <LevelIcon />
             <span>난이도 : 미설정</span>

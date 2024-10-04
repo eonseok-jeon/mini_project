@@ -7,6 +7,7 @@ import { contentCounts, courseCardWrapper } from './style.css';
 import { useEffect, useState } from 'react';
 import fetchCourses from './api';
 import { useFilter } from '@/app/_contexts/FilterProvider';
+import { DataType } from './types';
 
 export default function Contents() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -46,7 +47,7 @@ export default function Contents() {
     <section>
       <p className={contentCounts}>전체 {data?.courseCount}개</p>
       <div className={courseCardWrapper}>
-        {data?.data.map((data) => <CourseCard key={`${data.title}${data.shortDescription}`} {...data} />)}
+        {data?.data.map((data: DataType) => <CourseCard key={`${data.title}${data.short_description}`} {...data} />)}
       </div>
       <Pagination
         currentPage={currentPage}
