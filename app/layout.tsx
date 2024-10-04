@@ -25,14 +25,6 @@ export const metadata: Metadata = {
     description: '코딩교육 1위, 만족도 4.82점 엘카데미에서 차원이 다른 코딩교육을 경험해보세요!',
     url: 'https://mini-project-nine-neon.vercel.app/',
     siteName: '엘카데미',
-    // images: [
-    //   {
-    //     url: 'https://nextjs.org/og.png', // Must be an absolute URL
-    //     width: 800,
-    //     height: 400,
-    //     alt: '',
-    //   },
-    // ],
     locale: 'ko_KR',
     type: 'website',
   },
