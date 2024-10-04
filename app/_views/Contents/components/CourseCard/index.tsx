@@ -32,7 +32,7 @@ export default function CourseCard({ enroll_type, is_free, logo_file_url, short_
         <p className={titleStyle}>{title}</p>
         <p className={descriptionStyle}>{short_description}</p>
         <div className={iconContainer}>
-          <Image src={logo_file_url} alt={`${title}-logo`} className={logoImg} />
+          <Image src={logo_file_url || ''} alt={`${title}-logo`} width={52} height={52} className={logoImg} />
           <div className={iconWrapper}>
             <LevelIcon />
             <span>난이도 : 미설정</span>
