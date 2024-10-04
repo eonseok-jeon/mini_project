@@ -12,34 +12,36 @@ import ClassroomIcon from '@/app/_assets/Classroom';
 import CalendarIcon from '@/app/_assets/CalendarIcon';
 
 export interface CourseCardProps {
-  label: string;
+  enrollType: number;
+  isFree: boolean;
+  logoFileUrl: string;
+  shortDescription: string;
   title: string;
-  description: string;
-  level: '미설정' | '입문' | '초급' | '중급' | '고급';
-  classroom: '';
-  duration: string;
-  price: '무료' | '유료' | '구독';
 }
 
-export default function CourseCard({ label, title, description, level, classroom, duration, price }: CourseCardProps) {
+export default function CourseCard({ enrollType, isFree, logoFileUrl, shortDescription, title }: CourseCardProps) {
+  console.log(enrollType, 'enroll');
+  const price =
+    enrollType === 4 ? '구독' : enrollType === 0 && !!isFree ? '무료' : enrollType === 0 && !isFree ? '유료' : '에러';
+
   return (
     <article>
       <div className={container}>
-        <div className={labelStyle}>{label}</div>
+        <div className={labelStyle}>{'label'}</div>
         <p className={titleStyle}>{title}</p>
-        <p className={descriptionStyle}>{description}</p>
+        <p className={descriptionStyle}>{shortDescription}</p>
         <div className={iconContainer}>
           <div className={iconWrapper}>
             <LevelIcon />
-            <span>난이도 : {level}</span>
+            <span>난이도 : {1}</span>
           </div>
           <div className={iconWrapper}>
             <ClassroomIcon />
-            <span>수업 : {classroom}</span>
+            <span>수업 : {'classroom'}</span>
           </div>
           <div className={iconWrapper}>
             <CalendarIcon />
-            <span>기간 : {duration}</span>
+            <span>기간 : {'duration'}</span>
           </div>
         </div>
       </div>
