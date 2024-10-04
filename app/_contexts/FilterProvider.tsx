@@ -2,7 +2,7 @@
 
 import { createContext, type ReactNode, useCallback, useContext, useState } from 'react';
 
-type FilterType = {
+export type FilterType = {
   title?: string | null | undefined;
   price?: string[] | undefined;
 };

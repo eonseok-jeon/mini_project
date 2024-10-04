@@ -6,20 +6,20 @@ import Pagination from './components/Pagination';
 import { contentCounts, courseCardWrapper } from './style.css';
 import { useEffect, useState } from 'react';
 import fetchCourses from './api';
-import { useFilter } from '@/app/_contexts/FilterProvider';
-import { DataType } from './types';
+import { type FilterType, useFilter } from '@/app/_contexts/FilterProvider';
+import type { DataType, QueryData } from './types';
 
 export default function Contents() {
   const [currentPage, setCurrentPage] = useState(1);
   const queryClient = useQueryClient();
   const { filter } = useFilter();
 
-  const { data } = useQuery({
+  const { data } = useQuery<QueryData, Error, QueryData, (string | number | FilterType)[]>({
     queryKey: ['courses-data', currentPage, filter],
     queryFn: () => fetchCourses(currentPage, filter),
   });
 
-  const maxPage = Math.floor(data?.courseCount / 20) + 1;
+  const maxPage = Math.floor(data?.courseCount || 0 / 20) + 1;
 
   useEffect(() => {
     if (currentPage < maxPage) {
