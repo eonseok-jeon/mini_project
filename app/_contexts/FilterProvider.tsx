@@ -17,7 +17,6 @@ const FilterContext = createContext<FilterContextType>({
   handleSaveFilter: () => {},
 });
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useFilter = () => {
   const contextValue = useContext(FilterContext);
 
