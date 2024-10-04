@@ -12,6 +12,7 @@ import {
 import ClassroomIcon from '@/app/_assets/Classroom';
 import CalendarIcon from '@/app/_assets/CalendarIcon';
 import { DataType } from '../../types';
+import Image from 'next/image';
 
 export interface CourseCardProps {
   enroll_type: number;
@@ -31,7 +32,7 @@ export default function CourseCard({ enroll_type, is_free, logo_file_url, short_
         <p className={titleStyle}>{title}</p>
         <p className={descriptionStyle}>{short_description}</p>
         <div className={iconContainer}>
-          <img src={logo_file_url} alt={`${title}-logo`} className={logoImg} />
+          <Image src={logo_file_url} alt={`${title}-logo`} className={logoImg} />
           <div className={iconWrapper}>
             <LevelIcon />
             <span>난이도 : 미설정</span>
