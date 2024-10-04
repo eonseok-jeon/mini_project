@@ -40,6 +40,7 @@ export const descriptionStyle = style({
 });
 
 export const iconContainer = style({
+  position: 'relative',
   display: 'flex',
   flexDirection: 'column',
   gap: 10,
@@ -50,6 +51,14 @@ export const iconWrapper = style({
   gap: 8,
   alignItems: 'center',
   ...theme.font.iconText,
+});
+
+export const logoImg = style({
+  position: 'absolute',
+  top: 0,
+  right: 0,
+  width: 52,
+  height: 52,
 });
 
 export const priceWrapper = style({

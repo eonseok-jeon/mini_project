@@ -5,6 +5,7 @@ import {
   iconContainer,
   iconWrapper,
   labelStyle,
+  logoImg,
   priceWrapper,
   titleStyle,
 } from './style.css';
@@ -30,6 +31,7 @@ export default function CourseCard({ enrollType, isFree, logoFileUrl, shortDescr
         <p className={titleStyle}>{title}</p>
         <p className={descriptionStyle}>{shortDescription}</p>
         <div className={iconContainer}>
+          <img src={logoFileUrl} alt={`${title}-logo`} className={logoImg} />
           <div className={iconWrapper}>
             <LevelIcon />
             <span>난이도 : {1}</span>
