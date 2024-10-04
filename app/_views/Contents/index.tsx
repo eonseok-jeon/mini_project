@@ -29,7 +29,7 @@ export default function Contents() {
         queryFn: () => fetchCourses(nextPage, filter),
       });
     }
-  }, [currentPage, maxPage, queryClient]);
+  }, [currentPage, maxPage, queryClient, filter]);
 
   const handleClickPreviousPage = () => {
     setCurrentPage((prev) => Math.max(prev - 1, 1));
