@@ -34,15 +34,15 @@ export default function CourseCard({ enrollType, isFree, logoFileUrl, shortDescr
           <img src={logoFileUrl} alt={`${title}-logo`} className={logoImg} />
           <div className={iconWrapper}>
             <LevelIcon />
-            <span>난이도 : {1}</span>
+            <span>난이도 : 미설정</span>
           </div>
           <div className={iconWrapper}>
             <ClassroomIcon />
-            <span>수업 : {'classroom'}</span>
+            <span>수업 : 온라인</span>
           </div>
           <div className={iconWrapper}>
             <CalendarIcon />
-            <span>기간 : {'duration'}</span>
+            <span>기간 : 무제한</span>
           </div>
         </div>
       </div>
