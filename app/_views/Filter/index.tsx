@@ -6,27 +6,27 @@ import { container, wrapper, labelStyle, dataList, chip, activeChip } from './st
 import { useState } from 'react';
 
 export default function Filter() {
-  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+  const [selectedFilters, setSelectedFilters] = useState<string[] | undefined>([]);
   const { handleSaveFilter } = useFilter();
 
   const handlePriceFilter = (item: string) => {
     setSelectedFilters((prevSelected) => {
-      if (prevSelected.includes(item)) {
+      if (prevSelected?.includes(item)) {
         // 이미 선택된 항목을 클릭했을 때: 선택 해제
-        const newSelected = prevSelected.filter((filter) => filter !== item);
+        const newSelected = prevSelected?.filter((filter) => filter !== item);
         handleSaveFilter({ price: newSelected });
         return newSelected;
       }
-      if (!prevSelected.includes(item)) {
+      if (!prevSelected?.includes(item)) {
         // 새로운 항목 선택
-        const newSelected = [...prevSelected, item];
+        const newSelected = [...(prevSelected as string[]), item];
         handleSaveFilter({ price: newSelected });
         return newSelected;
       }
     });
   };
 
-  const isActive = (item: string) => selectedFilters.includes(item);
+  const isActive = (item: string) => selectedFilters?.includes(item);
 
   return (
     <ol className={container}>
