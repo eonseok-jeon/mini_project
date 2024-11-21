@@ -16,6 +16,11 @@ export async function GET(req: NextRequest) {
       'Content-Type': 'application/json',
     },
   });
+
+  if (!res.ok) {
+    return Response.json({ error: 'Failed to fetch data' }, { status: res.status });
+  }
+
   const data = await res.json();
 
   return Response.json({ data });
