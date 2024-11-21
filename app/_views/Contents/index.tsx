@@ -1,6 +1,6 @@
 'use client';
 
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { keepPreviousData, useQuery, useQueryClient } from '@tanstack/react-query';
 import CourseCard from './components/CourseCard';
 import Pagination from './components/Pagination';
 import { contentCounts, courseCardWrapper } from './style.css';
@@ -17,6 +17,7 @@ export default function Contents() {
   const { data } = useQuery<QueryData, Error, QueryData, (string | number | FilterType)[]>({
     queryKey: ['courses-data', currentPage, filter],
     queryFn: () => fetchCourses(currentPage, filter),
+    placeholderData: keepPreviousData,
   });
 
   const maxPage = Math.floor(data?.courseCount || 0 / 20) + 1;
@@ -45,7 +46,7 @@ export default function Contents() {
 
   return (
     <section>
-      <p className={contentCounts}>전체 {data?.courseCount}개</p>
+      <p className={contentCounts}>전체 {data?.courseCount || 0}개</p>
       <div className={courseCardWrapper}>
         {data?.data.map((data: DataType) => <CourseCard key={`${data.title}${data.short_description}`} {...data} />)}
       </div>
