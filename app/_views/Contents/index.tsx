@@ -34,7 +34,7 @@ export default function Contents() {
     placeholderData: keepPreviousData,
   });
 
-  const maxPage = Math.floor(data?.courseCount || 0 / 20) + 1;
+  const maxPage = Math.floor((data?.courseCount || 0) / 20) + 1;
 
   useEffect(() => {
     if (currentPage < maxPage) {
