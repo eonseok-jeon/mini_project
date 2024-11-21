@@ -8,11 +8,25 @@ import { useEffect, useState } from 'react';
 import fetchCourses from './api';
 import { type FilterType, useFilter } from '@/app/_contexts/FilterProvider';
 import type { DataType, QueryData } from './types';
+import { useSearchParams } from 'next/navigation';
 
 export default function Contents() {
   const [currentPage, setCurrentPage] = useState(1);
   const queryClient = useQueryClient();
-  const { filter } = useFilter();
+  const searchParams = useSearchParams();
+  const { filter, handleSaveFilter } = useFilter();
+
+  useEffect(() => {
+    const titleFilters = searchParams.getAll('title')[0]; // URL 쿼리에서 `price` 값만 가져옴
+    const priceFilters = searchParams.getAll('price'); // URL 쿼리에서 `price` 값만 가져옴
+
+    if (!priceFilters) return;
+
+    handleSaveFilter({
+      title: titleFilters,
+      price: priceFilters,
+    });
+  }, [handleSaveFilter, searchParams]);
 
   const { data } = useQuery<QueryData, Error, QueryData, (string | number | FilterType)[]>({
     queryKey: ['courses-data', currentPage, filter],
