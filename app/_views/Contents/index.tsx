@@ -37,7 +37,8 @@ export default function Contents() {
   const maxPage = Math.floor((data?.courseCount || 0) / 20) + 1;
 
   useEffect(() => {
-    if (currentPage < maxPage) {
+    if (currentPage > maxPage) setCurrentPage(maxPage);
+    else if (currentPage < maxPage) {
       const nextPage = currentPage + 1;
       queryClient.prefetchQuery({
         queryKey: ['courses-data', nextPage, filter],
